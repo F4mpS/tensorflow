@@ -21,7 +21,7 @@ jobs:
           image: sdukshis/cppml
           options: -i -v ${{ github.workspace }}:/usr/src/app
           run: |
-            cmake -B build
+            cmake -B build -D PATCH_VERSION=${{ github.run_number }}
             cmake --build ./build
             cmake --build ./build --target package
       
