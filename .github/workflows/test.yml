@@ -16,11 +16,10 @@ jobs:
       - run: TEMP_DEB="$(mktemp)" && wget -O "$TEMP_DEB" 'https://github.com/conan-io/conan/releases/download/1.62.0/conan-ubuntu-64.deb' && sudo dpkg -i "$TEMP_DEB" && rm -f "$TEMP_DEB"
       - run: docker run --rm -i -v $(pwd):/usr/src/app 
 
-      - name: Run Docker container to compile assets
+      - name: Run Docker container
         uses: addnab/docker-run-action@v3
         with:
-          image: sdukshis/cppml
-          options: --rm -i -v $(pwd):/usr/src/app
+          options: --rm -i -v $(pwd):/usr/src/app sdukshis/cppml
           run: |
             cmake -B build
             cmake --build ./build
