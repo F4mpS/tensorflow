@@ -19,7 +19,7 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: sdukshis/cppml
-          options: -i -v $(pwd):/usr/src/app
+          options: -i -v /usr/src/app
           run: |
             cmake -B build
             cmake --build ./build
